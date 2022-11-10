@@ -6,7 +6,7 @@ JS_WebSocket_Gaming_Project
 - **[Done]** Single client to Single server
 - **[Done]** Multiple clients to Single server (broadcast msg to other all clients)
 - **[Done]** Detection of client's disconnection
-- **[On-going]** Identification of each client
+- **[Done]** Identification of each client
 
 ---
 ## Development of Game View
