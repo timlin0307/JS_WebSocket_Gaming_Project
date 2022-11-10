@@ -8,7 +8,8 @@ if (ws) {
 }
 
 // if client doesn't have a connection, initialise a new connection to server
-ws = new WebSocket('ws://localhost:3000'); // create a socket
+var client_name = "player1"
+ws = new WebSocket("ws://localhost:3000/?token=" + client_name); // create a socket
 
 ws.onopen = function () { // open event
     console.log("Connection open in websocket...")
