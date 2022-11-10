@@ -5,8 +5,9 @@ JS_WebSocket_Gaming_Project
 ## Development
 - [Done] Single client to Single server
 - [Done] Multiple clients to Single server (broadcast msg to other all clients)
+- [Done] Detection of client's disconnection
+- []
 - [On-going] Identification of each client
-
 
 ---
 ## Configuration
@@ -37,7 +38,6 @@ node server.js
 - [WebSocket](https://javascript.info/websocket#:~:text=WebSocket%201%20A%20simple%20example%20To%20open%20a,...%207%20Chat%20example%20...%208%20Summary%20)
 - [如何使用JavaScript实现客户端与服务器的websocket通信？](https://zhuanlan.zhihu.com/p/97336307)
 - [Node.js WebSocket Tutorial - Real-Time Chat Room using Multiple Clients](https://dev.to/karlhadwen/node-js-websocket-tutorial-real-time-chat-room-using-multiple-clients-24ad)
-- [unique identifier for each client request to websocket server #859](https://github.com/websockets/ws/issues/859)
 - [nodejs websocket detect disconnected socket](https://stackoverflow.com/questions/35503895/nodejs-websocket-detect-disconnected-socket)
-
+- [unique identifier for each client request to websocket server #859](https://github.com/websockets/ws/issues/859)
 
