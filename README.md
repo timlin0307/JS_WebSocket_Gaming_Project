@@ -20,7 +20,7 @@ npm add --save express
 ```
 3. Use npm to install the ws (WebSocket) module
 ```
-npm i ws
+npm install --save ws
 ```
 4. To check WebSocket version
 ```
