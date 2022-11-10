@@ -2,6 +2,13 @@
 JS_WeSocket_Gaming_Project
 
 ---
+## Development
+- [] Single client to Single server
+- [] Multiple clients to Single server (broadcast msg to other all clients)
+- [] Identification of each client
+
+
+---
 ## Configuration
 1. In order for npm to manage our modules (create a configuration file named “package.json”)
 ```
