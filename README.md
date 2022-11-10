@@ -1,5 +1,5 @@
-# JS_WeSocket_Gaming_Project
-JS_WeSocket_Gaming_Project
+# JS_WebSocket_Gaming_Project
+JS_WebSocket_Gaming_Project
 
 ---
 ## Development
