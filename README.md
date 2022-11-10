@@ -2,12 +2,17 @@
 JS_WebSocket_Gaming_Project
 
 ---
-## Development
+## Development of Game Server
 - **[Done]** Single client to Single server
 - **[Done]** Multiple clients to Single server (broadcast msg to other all clients)
 - **[Done]** Detection of client's disconnection
-- **[]**
 - **[On-going]** Identification of each client
+
+---
+## Development of Game View
+- **[]** Player's character controls (left, right, up, down)
+- **[]** Characters always stay in the center
+- **[]** Body & Item block
 
 ---
 ## Configuration
