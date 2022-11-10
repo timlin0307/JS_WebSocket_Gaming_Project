@@ -37,3 +37,6 @@ node server.js
 - [如何使用JavaScript实现客户端与服务器的websocket通信？](https://zhuanlan.zhihu.com/p/97336307)
 - [Node.js WebSocket Tutorial - Real-Time Chat Room using Multiple Clients](https://dev.to/karlhadwen/node-js-websocket-tutorial-real-time-chat-room-using-multiple-clients-24ad)
 - [unique identifier for each client request to websocket server #859](https://github.com/websockets/ws/issues/859)
+- [How to Keep Track of Clients with Websockets](https://medium.com/@willrigsbee/how-to-keep-track-of-clients-with-websockets-1a018c23bbfc)
+
+
