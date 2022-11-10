@@ -3,9 +3,9 @@ JS_WeSocket_Gaming_Project
 
 ---
 ## Development
-- [] Single client to Single server
-- [] Multiple clients to Single server (broadcast msg to other all clients)
-- [] Identification of each client
+- [Done] Single client to Single server
+- [Done] Multiple clients to Single server (broadcast msg to other all clients)
+- [On-going] Identification of each client
 
 
 ---
