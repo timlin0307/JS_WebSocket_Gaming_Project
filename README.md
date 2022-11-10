@@ -22,7 +22,11 @@ npm add --save express
 ```
 npm i ws
 ```
-4. To run this game, in a terminal placed in the folder where “server.js” is located
+4. To check WebSocket version
+```
+npm ls ws
+```
+5. To run this game, in a terminal placed in the folder where “server.js” is located
 ```
 node server.js
 ```
