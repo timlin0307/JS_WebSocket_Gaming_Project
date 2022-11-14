@@ -46,4 +46,6 @@ node server.js
 - [Node.js WebSocket Tutorial - Real-Time Chat Room using Multiple Clients](https://dev.to/karlhadwen/node-js-websocket-tutorial-real-time-chat-room-using-multiple-clients-24ad)
 - [nodejs websocket detect disconnected socket](https://stackoverflow.com/questions/35503895/nodejs-websocket-detect-disconnected-socket)
 - [unique identifier for each client request to websocket server #859](https://github.com/websockets/ws/issues/859)
+- [Express 实战: 使用 express-ws 实现 WebSocket 协议](https://blog.csdn.net/weixin_44691608/article/details/110646361)
+- [express-ws实现WebSocket](https://www.jianshu.com/p/8b10c2b858db)
 
