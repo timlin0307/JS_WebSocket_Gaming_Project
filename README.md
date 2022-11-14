@@ -10,8 +10,8 @@ JS_WebSocket_Gaming_Project
 
 ---
 ## Development of Game View
-- **[]** Player's character controls (left, right, up, down)
-- **[]** Characters always stay in the center
+- **[Done]** Player's character controls (left, right, up, down)
+- **[Done]** Characters always stay in the center
 - **[]** Body & Item block
 
 ---
@@ -23,6 +23,7 @@ npm init
 2. To add a module (create a folder named node_modules)
 ```
 npm add --save express
+npm add express express-ws
 ```
 3. Use npm to install the ws (WebSocket) module
 ```
