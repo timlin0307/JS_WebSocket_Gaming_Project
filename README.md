@@ -7,6 +7,7 @@ JS_WebSocket_Gaming_Project
 - **[Done]** Multiple clients to Single server (broadcast msg to other all clients)
 - **[Done]** Detection of client's disconnection
 - **[Done]** Identification of each client
+- **[]** Using express-ws to activate WebSocket
 
 ---
 ## Development of Game View
