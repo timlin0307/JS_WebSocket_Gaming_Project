@@ -44,7 +44,7 @@ node server.js
 ```
 node db.js
 ```
-7. To create initial data in db.sqlite
+7. To create initial data in "db.sqlite"
 ```
 node db_init.js
 ```
