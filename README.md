@@ -40,6 +40,14 @@ npm ls ws
 ```
 node server.js
 ```
+6. To create a database "db.sqlite"
+```
+node db.js
+```
+7. To create initial data in db.sqlite
+```
+node db_init.js
+```
 
 ---
 ## References
