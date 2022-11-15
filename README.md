@@ -8,7 +8,8 @@ JS_WebSocket_Gaming_Project
 - **[Done]** Detection of client's disconnection
 - **[Done]** Identification of each client
 - **[Cancel]** Using express-ws to activate WebSocket
-- **[]** Create database by sql3 & sqlite
+- **[Done]** Create database by sql3 & sqlite
+- **[]** Read player data from database before starting game
 - **[]** Two different players while connecting to server
 
 ---
