@@ -16,6 +16,7 @@ JS_WebSocket_Gaming_Project
 ## Development of Game View
 - **[Done]** Player's character controls (left, right, up, down)
 - **[Done]** Characters always stay in the center
+- **[Done]** Login page before playing game
 - **[]** Body & Item block
 
 ---
