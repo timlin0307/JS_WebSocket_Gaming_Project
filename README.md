@@ -19,7 +19,7 @@ JS_WebSocket_Gaming_Project
 - **[]** Body & Item block
 
 ---
-## Configuration
+## Important Comment
 1. In order for npm to manage our modules (create a configuration file named “package.json”)
 ```
 npm init
@@ -49,6 +49,10 @@ node db.js
 ```
 node db_init.js
 ```
+
+---
+## Problems
+- According to this : [window.location.href doesn't redirect](https://stackoverflow.com/questions/15759020/window-location-href-doesnt-redirect), if type of inputbox is "submit", window.location.href won't work. We need to use type "button".
 
 ---
 ## References
