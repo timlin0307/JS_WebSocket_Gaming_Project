@@ -3,6 +3,7 @@ const express = require('express') // import express module
 const http = require('http') // initialise a server
 const WebSocket = require('ws') // import WebSocket module
 const url = require('url')
+const db = require("./db")
 
 const port = 3000
 const server = http.createServer(express) // pass express in server
