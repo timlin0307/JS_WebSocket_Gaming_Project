@@ -9,7 +9,7 @@ JS_WebSocket_Gaming_Project
 - **[Done]** Identification of each client
 - **[Done]** Using express-ws to activate WebSocket
 - **[Done]** Create database by sql3 & sqlite
-- **[]** Read player data from database before starting game
+- **[Done]** Read player data from database before starting game
 - **[]** Two different players while connecting to server
 
 ---
