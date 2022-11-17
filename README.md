@@ -74,3 +74,4 @@ node db_init.js
 - [Sequelize tutorial](https://zetcode.com/javascript/sequelize/)
 - [How to use a function from another file using require()](https://stackoverflow.com/questions/36511508/how-to-use-a-function-from-another-file-using-require)
 - [WebSocket: How to automatically reconnect after it dies](https://stackoverflow.com/questions/22431751/websocket-how-to-automatically-reconnect-after-it-dies)
+- [彻底搞懂 async await 的return问题](https://blog.csdn.net/clli_Chain/article/details/106412207)
