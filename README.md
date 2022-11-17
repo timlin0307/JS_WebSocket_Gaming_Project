@@ -10,7 +10,8 @@ JS_WebSocket_Gaming_Project
 - **[Done]** Identification of each client
 - **[Done]** Create database by sql3 & sqlite
 - **[Done]** Read player data from database before starting game
-- **[]** Add a flag in db to check whether player is been used or not
+- **[Done]** Add a flag in db to check whether player is been used or not
+- **[]** Update db account status if player login
 - **[]** Two different players while connecting to server
 
 ---
