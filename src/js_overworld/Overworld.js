@@ -9,7 +9,6 @@ class Overworld {
     // continue fire every single frame
     startGameLoop() {
         const step = () => {
-
             // clear off the canvas
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
@@ -20,7 +19,8 @@ class Overworld {
             // update all objects
             Object.values(this.map.gameObjects).forEach(object => {
                 object.update({
-                    arrow: this.directionInput.direction
+                    arrow: this.directionInput.direction,
+                    map: this.map
                 })
             })
 
@@ -28,8 +28,13 @@ class Overworld {
             this.map.drawLowerImage(this.ctx, cameraPerson)
 
             // draw game objects
-            Object.values(this.map.gameObjects).forEach(object => {
+            /*Object.values(this.map.gameObjects).forEach(object => {
                 object.sprite.draw(this.ctx, cameraPerson);
+            })*/
+            Object.values(this.map.gameObjects).sort((a, b) => {
+                return a.y - b.y
+            }).forEach(object => {
+                object.sprite.draw(this.ctx, cameraPerson)
             })
 
             // draw upper layer
@@ -52,6 +57,7 @@ class Overworld {
 
     init() {
         this.map = new OverworldMap(window.OverworldMaps.DemoRoom)
+        this.map.mountObjects()
 
         this.directionInput = new DirectionInput()
         this.directionInput.init()
@@ -59,5 +65,13 @@ class Overworld {
 
         // kick off the game
         this.startGameLoop()
+
+        /*this.map.startCutscene([
+            { who: "hero", type: "walk", direction: "down" },
+            { who: "hero", type: "walk", direction: "down" },
+            { who: "npc1", type: "walk", direction: "left" },
+            { who: "npc1", type: "walk", direction: "left" },
+            { who: "npc1", type: "stand", direction: "up", time: 800 }
+        ])*/
     }
 }

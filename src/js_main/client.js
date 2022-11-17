@@ -49,6 +49,12 @@ function connect() {
         } else if (message.data == "Denied") { // if server refuse client's connection
             window.location.reload(true)  // reload client website
         }
+
+        // get other players movement
+        if (message.data.slice(0, 8) == "movement") {
+            behavior.push({ type: "walk", direction: message.data.split(", ")[2] })
+            console.log(message.data.split(", ")[2])
+        }
     }
 }
 
