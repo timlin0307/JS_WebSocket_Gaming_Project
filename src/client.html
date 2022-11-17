@@ -41,20 +41,13 @@
 
     <!-- Scripts -->
     <script>
-        var game_container = document.getElementById("game-container")
-        var center = document.getElementById("center")
         var username = document.getElementById("text")
         var password = document.getElementById("password")
         const button = document.getElementById('button')
 
-        button.addEventListener('click', function (e) {
+        button.addEventListener('click', function (e) { // check if both inputbox isn't null
             if (username.value != "" && password.value != "") {
                 ws_send("account " + username.value + " " + password.value)
-                // window.location.href = "client.html"
-                game_container.style.display = "block"
-                game_container.visibility = "visible"
-                center.style.display = "none"
-                center.visibility = "hidden"
             }
         })
     </script>

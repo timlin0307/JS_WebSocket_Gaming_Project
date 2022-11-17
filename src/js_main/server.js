@@ -1,4 +1,4 @@
-const { findByUsername, countRows, findAllRows, updateRow } = require("../db_method")
+const { findByUsername, countRows, findAllRows, updateStatusLogin, updateStatusLogout } = require("../db_method")
 
 const express = require('express') // import express module
 const app = express()
@@ -60,12 +60,12 @@ console.log("setup server...")
 
 var wss = expressWs.getWss('/')
 
-app.use(function (req, res, next) {
+app.use(function (req, res, next) { // listen for a connection on newly initialised WebSocket server
     const { query: { token } } = url.parse(req.url, true)
-    /*if (token != "unknown") {
+    if (token != "unknown") { // only show player message
         console.log(`[SERVER] Client ${token} connects`)
-    }*/
-    console.log(`[SERVER] Client ${token} connects`)
+    }
+    // console.log(`[SERVER] Client ${token} connects`)
     return next()
 })
 
@@ -83,16 +83,16 @@ app.ws('/', function (ws, req) {
             const username = message.split(" ")[1]
             const password = message.split(" ")[2]
 
-            db.model.Account.findOne({
+            db.model.Account.findOne({ // find username in database
                 where: { username: username }
-            }).then(res => {
+            }).then(res => { // if find same username
                 // console.log(res.get({ plain: true }))
-                if (password == res.password) {
-                    if (res.status == "logout") {
+                if (password == res.password) { // if password is correct
+                    if (res.status == "logout") { // if account hasn't login yet
                         console.log(`[SERVER] Confirming ${username} login...`)
-                        updateRow(username)
+                        updateStatusLogin(username)
                         ws.send("Verified " + username) // send player identification to client
-                    } else if (res.status == "login") {
+                    } else if (res.status == "login") { // if account has been login
                         console.log(`[SERVER] Account ${username} has been used...`)
                         ws.send("Denied") // deny to send player identification to client
                     }
@@ -100,7 +100,7 @@ app.ws('/', function (ws, req) {
                     console.log(`[SERVER] Wrong password...`)
                     ws.send("Denied") // deny to send player identification to client
                 }
-            }).catch(err => {
+            }).catch(err => { // if username doesn't exist in database
                 // console.log(err)
                 console.log(`[SERVER] Wrong account...`)
                 ws.send("Denied") // deny to send player identification to client
@@ -118,11 +118,12 @@ app.ws('/', function (ws, req) {
         }
     })
 
-    ws.on('close', function disconnection(ws, req) {
-        /*if (token != "unknown") {
+    ws.on('close', function disconnection(ws, req) { // listen for disconnection event
+        updateStatusLogout(token)
+        if (token != "unknown") { // only show player message
             console.log(`[SERVER] Client ${token} disconnects`)
-        }*/
-        console.log(`[SERVER] Client ${token} disconnects`)
+        }
+        // console.log(`[SERVER] Client ${token} disconnects`)
     })
 })
 

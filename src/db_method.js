@@ -26,11 +26,22 @@ const findAllRows = async function () {
     return accounts
 }
 
-const updateRow = async function (username) {
+const updateStatusLogin = async function (username) {
     let user = await db.model.Account.update(
         { status: "login" },
         { where: { username: username } })
-    console.log(username + "'s status updated")
+    if (username != "unknown") { // only show player message
+        console.log(username + "'s status updated to login")
+    }
 }
 
-module.exports = { findByUsername, countRows, findAllRows, updateRow }
+const updateStatusLogout = async function (username) {
+    let user = await db.model.Account.update(
+        { status: "logout" },
+        { where: { username: username } })
+    if (username != "unknown") { // only show player message
+        console.log(username + "'s status updated to logout")
+    }
+}
+
+module.exports = { findByUsername, countRows, findAllRows, updateStatusLogin, updateStatusLogout }

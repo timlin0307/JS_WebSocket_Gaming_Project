@@ -1,12 +1,15 @@
+var game_container = document.getElementById("game-container")
+var center = document.getElementById("center")
+
 let ws
 let client_name = "unknown"
 
 function connect() {
     // check if there's a connection already for client if there is
     // a connection, go ahead and null connection and then close it
-    if (ws) {
+    if (ws) { // avoid re-run connect() function but having two instant socket connection
         ws.onerror = ws.onopen = ws.onclose = null
-        ws.close()
+        ws.close() // close previous socket connection
     }
 
     // if client doesn't have a connection, initialise a new connection to server
@@ -33,11 +36,18 @@ function connect() {
         console.log(message.data)
 
         // get player identification from server
-        if (message.data.split(" ")[0] == "Verified") {
-            client_name = message.data.split(" ")[1]
+        if (message.data.split(" ")[0] == "Verified") { // if client is verified by server
+            client_name = message.data.split(" ")[1] // update current token
             connect() // re-connect WebSocket to have a token on the website url
-        } else if (message.data == "Denied") {
-            window.location.href = "client.html"  // re-open new website
+
+            // show game scene
+            game_container.style.display = "block"
+            game_container.visibility = "visible"
+            center.style.display = "none"
+            center.visibility = "hidden"
+
+        } else if (message.data == "Denied") { // if server refuse client's connection
+            window.location.reload(true)  // reload client website
         }
     }
 }
