@@ -12,7 +12,7 @@ JS_WebSocket_Gaming_Project
 - **[Done]** Read player data from database before starting game
 - **[Done]** Add a status in db to check whether player is been used or not
 - **[Done]** Update db account status if player login
-- **[]** Two different players while connecting to server
+- **[Done]** Different players have different token while connecting to server (personal account)
 
 ---
 ## Development of Game View
