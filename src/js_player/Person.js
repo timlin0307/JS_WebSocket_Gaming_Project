@@ -35,7 +35,7 @@ class Person extends GameObject {
             // ws_send(this.x + ", " + this.y + ", " + this.direction)
             this.movingProgressRemaining -= 1
             if (this.movingProgressRemaining == 0) {
-                ws_send(this.x + ", " + this.y + ", " + this.direction)
+                ws_send("movement " + this.x + ", " + this.y + ", " + this.direction)
             }
         }
     }

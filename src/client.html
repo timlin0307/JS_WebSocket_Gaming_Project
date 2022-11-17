@@ -49,10 +49,10 @@
 
         button.addEventListener('click', function (e) {
             if (username.value != "" && password.value != "") {
+                ws_send("account " + username.value + " " + password.value)
                 // window.location.href = "client.html"
                 game_container.style.display = "block"
                 game_container.visibility = "visible"
-
                 center.style.display = "none"
                 center.visibility = "hidden"
             }
