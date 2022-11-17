@@ -19,6 +19,7 @@ JS_WebSocket_Gaming_Project
 - **[Done]** Player's character controls (left, right, up, down)
 - **[Done]** Characters always stay in the center
 - **[Done]** Login page before playing game
+- **[]** Two people controlled by different client (one client can see person controlled by another)
 - **[]** Body & Item block
 
 ---
