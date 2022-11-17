@@ -1,4 +1,4 @@
-const { findByUsername, countRows, findAllRows, userVerify } = require("../db_method")
+const { findByUsername, countRows, findAllRows, updateRow } = require("../db_method")
 
 const express = require('express') // import express module
 const app = express()
@@ -7,13 +7,6 @@ const expressWs = require('express-ws')(app) // import express-ws module
 const url = require('url')
 const port = 3000
 const db = require("../db")
-
-let total_player
-countRows().then(n => {
-    // console.log(n)
-    total_player = n
-    // console.log("total player are " + total_player + "...")
-})
 
 app.use(express.json())
 
@@ -69,10 +62,10 @@ var wss = expressWs.getWss('/')
 
 app.use(function (req, res, next) {
     const { query: { token } } = url.parse(req.url, true)
-    if (token != "unknown") {
+    /*if (token != "unknown") {
         console.log(`[SERVER] Client ${token} connects`)
-    }
-    // console.log(`[SERVER] Client connects`)
+    }*/
+    console.log(`[SERVER] Client ${token} connects`)
     return next()
 })
 
@@ -90,18 +83,28 @@ app.ws('/', function (ws, req) {
             const username = message.split(" ")[1]
             const password = message.split(" ")[2]
 
-            // ***strange function, need to be modified***
-            for (i = 0; i < total_player; i++) {
-                // go through all account info in db until verify this incoming account
-                userVerify(i).then(p => {
-                    // console.log(p[0], p[1])
-                    if (username == p[0] && password == p[1]) {
+            db.model.Account.findOne({
+                where: { username: username }
+            }).then(res => {
+                // console.log(res.get({ plain: true }))
+                if (password == res.password) {
+                    if (res.status == "logout") {
                         console.log(`[SERVER] Confirming ${username} login...`)
+                        updateRow(username)
                         ws.send("Verified " + username) // send player identification to client
-                        return // recursive usage, not break but return
+                    } else if (res.status == "login") {
+                        console.log(`[SERVER] Account ${username} has been used...`)
+                        ws.send("Denied") // deny to send player identification to client
                     }
-                })
-            }
+                } else {
+                    console.log(`[SERVER] Wrong password...`)
+                    ws.send("Denied") // deny to send player identification to client
+                }
+            }).catch(err => {
+                // console.log(err)
+                console.log(`[SERVER] Wrong account...`)
+                ws.send("Denied") // deny to send player identification to client
+            })
         }
 
         // movement type message
@@ -116,9 +119,10 @@ app.ws('/', function (ws, req) {
     })
 
     ws.on('close', function disconnection(ws, req) {
-        if (token != "unknown") {
+        /*if (token != "unknown") {
             console.log(`[SERVER] Client ${token} disconnects`)
-        }
+        }*/
+        console.log(`[SERVER] Client ${token} disconnects`)
     })
 })
 

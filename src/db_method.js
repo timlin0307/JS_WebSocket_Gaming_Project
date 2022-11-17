@@ -1,28 +1,36 @@
 const db = require("./db")
 
-async function findByUsername(username) {
+const findByUsername = async function (username) {
     await db.model.Account.findOne({
         where: { username: username }
-    }).then(note => {
-        console.log(note.get({ plain: true }))
+    }).then(res => {
+        console.log(res.get({ plain: true }))
     })
 }
 
-async function countRows() {
-    const n = await db.model.Account.count()
+const countRows = async function () {
+    let n = await new Promise((resolve, reject) => {
+        resolve(db.model.Account.count())
+    })
+
     // console.log(`There are ${n} rows`)
     return n
 }
 
-async function findAllRows() {
-    let accounts = await db.model.Account.findAll({ raw: true })
-    console.log(accounts)
-}
+const findAllRows = async function () {
+    let accounts = await new Promise((resolve, reject) => {
+        resolve(db.model.Account.findAll({ raw: true }))
+    })
 
-async function userVerify(id) {
-    let accounts = await db.model.Account.findAll({ raw: true })
     // console.log(accounts[id].username, accounts[id].password)
-    return [accounts[id].username, accounts[id].password]
+    return accounts
 }
 
-module.exports = { findByUsername, countRows, findAllRows, userVerify }
+const updateRow = async function (username) {
+    let user = await db.model.Account.update(
+        { status: "login" },
+        { where: { username: username } })
+    console.log(username + "'s status updated")
+}
+
+module.exports = { findByUsername, countRows, findAllRows, updateRow }

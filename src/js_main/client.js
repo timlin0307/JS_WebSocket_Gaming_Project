@@ -36,6 +36,8 @@ function connect() {
         if (message.data.split(" ")[0] == "Verified") {
             client_name = message.data.split(" ")[1]
             connect() // re-connect WebSocket to have a token on the website url
+        } else if (message.data == "Denied") {
+            window.location.href = "client.html"  // re-open new website
         }
     }
 }
