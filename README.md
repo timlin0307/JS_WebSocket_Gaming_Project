@@ -55,7 +55,11 @@ node db_init.js
 
 ---
 ## Problems
+- If having this problem : [An invalid form control with name='xxx' is not focusable](https://blog.csdn.net/zstkst/article/details/48677427), it means that "require" in html element inputbox causes some problmes.
 - According to this : [window.location.href doesn't redirect](https://stackoverflow.com/questions/15759020/window-location-href-doesnt-redirect), if type of inputbox is "submit", window.location.href won't work. We need to use type "button".
+- According to this : [How to use a function from another file using require()](https://stackoverflow.com/questions/36511508/how-to-use-a-function-from-another-file-using-require), because we didn't use module type in our project, we cannot use import/export in our js files, we need to use require()/module.export to implement module concept.
+- In order to reconnect once client gets valid token from server, we can refresh client website to update url's token by following this : [WebSocket: How to automatically reconnect after it dies](https://stackoverflow.com/questions/22431751/websocket-how-to-automatically-reconnect-after-it-dies).
+- Because of using async-await function with return value to deal with database, we can create functions in another js files by following this : [彻底搞懂 async await 的return问题](https://blog.csdn.net/clli_Chain/article/details/106412207). But we didn't really use this kind of function eventually as async-await functions are not used to returning values.
 
 ---
 ## References
@@ -68,10 +72,6 @@ node db_init.js
 - [Express 实战: 使用 express-ws 实现 WebSocket 协议](https://blog.csdn.net/weixin_44691608/article/details/110646361)
 - [express-ws实现WebSocket](https://www.jianshu.com/p/8b10c2b858db)
 - [express-ws](https://www.npmjs.com/package/express-ws)
-- [An invalid form control with name='xxx' is not focusable](https://blog.csdn.net/zstkst/article/details/48677427)
 - [Minimal express-ws broadcast to all clients](https://github.com/timlin0307/JS_WebSocket_Gaming_Project/edit/main/README.md)
 - [Node.js — 從一個實例看Express 的運作方式](https://medium.com/web-design-zone/%E5%BE%9Enode-js-%E5%BE%9E%E4%B8%80%E5%80%8B%E5%AF%A6%E4%BE%8B%E7%9C%8Bexpress-%E7%9A%84%E9%81%8B%E4%BD%9C%E6%96%B9%E5%BC%8F-7c61cdd477f5)
 - [Sequelize tutorial](https://zetcode.com/javascript/sequelize/)
-- [How to use a function from another file using require()](https://stackoverflow.com/questions/36511508/how-to-use-a-function-from-another-file-using-require)
-- [WebSocket: How to automatically reconnect after it dies](https://stackoverflow.com/questions/22431751/websocket-how-to-automatically-reconnect-after-it-dies)
-- [彻底搞懂 async await 的return问题](https://blog.csdn.net/clli_Chain/article/details/106412207)
