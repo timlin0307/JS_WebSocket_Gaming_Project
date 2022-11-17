@@ -22,7 +22,7 @@ JS_WebSocket_Gaming_Project
 - **[]** Body & Item block
 
 ---
-## Important Comment
+## Important Command
 1. In order for npm to manage our modules (create a configuration file named “package.json”)
 ```
 npm init
@@ -32,23 +32,20 @@ npm init
 npm add --save express
 npm add express express-ws
 ```
-3. Use npm to install the ws (WebSocket) module
+3. Use npm to install the ws (WebSocket) module and to check WebSocket version
 ```
 npm install --save ws
-```
-4. To check WebSocket version
-```
 npm ls ws
 ```
-5. To run this game, in a terminal placed in the folder where “server.js” is located
+4. To run this game, in a terminal placed in the folder where “server.js” is located
 ```
 node server.js
 ```
-6. To create a database "db.sqlite"
+5. To create a database "db.sqlite"
 ```
 node db.js
 ```
-7. To create initial data in "db.sqlite"
+6. To create initial data in "db.sqlite"
 ```
 node db_init.js
 ```
