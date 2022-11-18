@@ -21,7 +21,7 @@ JS_WebSocket_Gaming_Project
 - **[Done]** Login page before playing game
 - **[Done]** Body & Item block
 - **[Done]** One client can see player controlled by another client
-- **[]** Two people controll different player
+- **[]** Two client controll different player (only two now)
 - **[]** 
 
 ---
