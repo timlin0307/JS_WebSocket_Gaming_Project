@@ -6,7 +6,7 @@ async function initDB() {
     await db.model.Account.create({
         username: "player1",
         password: "player1",
-        status: "login"
+        status: "logout"
     })
 
     await db.model.Account.create({
@@ -24,7 +24,7 @@ async function initDB() {
     await db.model.Account.create({
         username: "player4",
         password: "player4",
-        status: "logout"
+        status: "login"
     })
 }
 

@@ -112,7 +112,7 @@ app.ws('/', function (ws, req) {
             // console.log("move")
             wss.clients.forEach(function each(client) {
                 if (client !== ws) {
-                    client.send(message) // broadcast message
+                    client.send(message + ", " + `${token}`) // broadcast message
                 }
             })
         }

@@ -3,6 +3,7 @@ var center = document.getElementById("center")
 
 let ws
 let client_name = "unknown"
+let behavior = { player: "", direction: "" }
 
 function connect() {
     // check if there's a connection already for client if there is
@@ -38,6 +39,7 @@ function connect() {
         // get player identification from server
         if (message.data.split(" ")[0] == "Verified") { // if client is verified by server
             client_name = message.data.split(" ")[1] // update current token
+            hero_player = client_name
             connect() // re-connect WebSocket to have a token on the website url
 
             // show game scene
@@ -52,8 +54,9 @@ function connect() {
 
         // get other players movement
         if (message.data.slice(0, 8) == "movement") {
-            behavior.push({ type: "walk", direction: message.data.split(", ")[2] })
-            console.log(message.data.split(", ")[2])
+            behavior = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
+            // console.log(behavior)
+            // console.log(window.OverworldMaps)
         }
     }
 }

@@ -30,11 +30,13 @@ class GameObject {
     }
 
     async doBehaviorEvent(map) {
+        // console.log("doBehaviorEvent")
         // don't do anything if there is a more important cutscene
         // or I don't have config to do anything anyway
         if (map.isCutscenePlaying || this.behaviorLoop.length === 0) {
             return
         }
+        // console.log(this.behaviorLoop)
 
         // setting up our event with relevant info
         let eventConfig = this.behaviorLoop[this.behaviorLoopIndex]
@@ -48,10 +50,10 @@ class GameObject {
         this.behaviorLoopIndex += 1
         if (this.behaviorLoopIndex === this.behaviorLoop.length) {
             this.behaviorLoopIndex = 0
-            behavior.splice(behavior.length, 1, null)
         }
+        // behavior.shift()
 
-        // do it again!
+        // do it again
         this.doBehaviorEvent(map)
     }
 }

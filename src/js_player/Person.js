@@ -14,6 +14,8 @@ class Person extends GameObject {
             "left": ["x", -1],
             "right": ["x", 1]
         }
+
+        this.playerToken = config.playerToken || "player1"
     }
 
     update(state) {
@@ -23,7 +25,8 @@ class Person extends GameObject {
             // more cases for starting to walk will come here
 
             // case : we're keyboard ready and have arrow pressed
-            if (!state.map.isCutscenePlaying && this.isPlayerControlled && state.arrow) {
+            // if (!state.map.isCutscenePlaying && this.isPlayerControlled && state.arrow) {
+            if (!state.map.isCutscenePlaying && state.arrow) {
                 // this.direction = state.arrow
                 // console.log(state.map.isSpaceTaken(this.x, this.y, this.direction))
                 // this.movingProgressRemaining = 16

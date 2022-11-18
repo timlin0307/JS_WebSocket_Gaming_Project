@@ -18,10 +18,20 @@ class Overworld {
 
             // update all objects
             Object.values(this.map.gameObjects).forEach(object => {
-                object.update({
-                    arrow: this.directionInput.direction,
-                    map: this.map
-                })
+                // console.log(object.playerToken)
+                if (object.playerToken != behavior.player && object.isPlayerControlled) {
+                    object.update({
+                        arrow: this.directionInput.direction,
+                        map: this.map
+                    })
+                } else {
+                    object.update({
+                        arrow: behavior.direction,
+                        map: this.map
+                    })
+                    // console.log(behavior)
+                    behavior = { player: "", direction: "" }
+                }
             })
 
             // draw lower layer
@@ -49,7 +59,7 @@ class Overworld {
                     requestAnimationFrame(() => {
                         step()
                     })
-                }, 15)
+                }, 1) // if lower, other player control better
             }
         }
         step()

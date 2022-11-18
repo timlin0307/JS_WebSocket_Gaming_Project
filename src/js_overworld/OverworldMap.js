@@ -82,21 +82,18 @@ window.OverworldMaps = {
         upperSrc: "./images/maps/DemoUpper.png",
         gameObjects: {
             hero: new Person({
+                playerToken: "player1",
                 isPlayerControlled: true,
                 x: utils.withGrid(5),
                 y: utils.withGrid(6)
             }),
             npc1: new Person({
+                playerToken: "player2",
                 isPlayerControlled: false,
                 x: utils.withGrid(7),
                 y: utils.withGrid(9),
                 src: "./images/characters/people/npc1.png",
-                behaviorLoop: [
-                    { type: "walk", direction: "left" },
-                    { type: "walk", direction: "up" },
-                    { type: "walk", direction: "right" },
-                    { type: "walk", direction: "down" }
-                ]
+                behaviorLoop: []
             })
         },
         walls: {
