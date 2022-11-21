@@ -76,3 +76,5 @@ node db_init.js
 - [Node.js — 從一個實例看Express 的運作方式](https://medium.com/web-design-zone/%E5%BE%9Enode-js-%E5%BE%9E%E4%B8%80%E5%80%8B%E5%AF%A6%E4%BE%8B%E7%9C%8Bexpress-%E7%9A%84%E9%81%8B%E4%BD%9C%E6%96%B9%E5%BC%8F-7c61cdd477f5)
 - [Sequelize tutorial](https://zetcode.com/javascript/sequelize/)
 - [JavaScript Add to List : examples](https://codesource.io/javascript-add-to-list-examples/)
+- [JavaScript 動態變數名](https://www.delftstack.com/zh-tw/howto/javascript/javascript-dynamic-variable-name/)
+- [Use dynamic variable names in JavaScript](https://stackoverflow.com/questions/5117127/use-dynamic-variable-names-in-javascript)
