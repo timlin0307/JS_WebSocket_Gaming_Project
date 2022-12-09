@@ -21,6 +21,7 @@ JS_WebSocket_Gaming_Project
 - **[Done]** Login page before playing game
 - **[Done]** Body & Item block
 - **[Done]** One client can see player controlled by another client
+- **[Done]** One client uses its own computer to connect to server
 - **[]** Two client controll different player (only two now)
 - **[]** 
 
@@ -61,6 +62,7 @@ node db_init.js
 - We had problem of broadcasting while changing module ws to express-ws, but solving by following this : [Minimal express-ws broadcast to all clients](https://github.com/timlin0307/JS_WebSocket_Gaming_Project/edit/main/README.md)
 - In order to reconnect once client gets valid token from server, we can refresh client website to update url's token by following this : [WebSocket: How to automatically reconnect after it dies](https://stackoverflow.com/questions/22431751/websocket-how-to-automatically-reconnect-after-it-dies).
 - Because of using async-await function with return value to deal with database, we can create functions in another js files by following this : [彻底搞懂 async await 的return问题](https://blog.csdn.net/clli_Chain/article/details/106412207). But we didn't really use this kind of function eventually as async-await functions are not used to returning values.
+- If one client wants to use its own computer to connect to server, by changing
 
 ---
 ## References
