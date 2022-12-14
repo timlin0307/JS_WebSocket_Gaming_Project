@@ -9,7 +9,8 @@ async function initDB() {
         status: "logout",
         character: "hero",
         x: "80",
-        y: "96"
+        y: "96",
+        direction: "down"
     })
 
     await db.model.Account.create({
@@ -18,7 +19,8 @@ async function initDB() {
         status: "logout",
         character: "npc1",
         x: "112",
-        y: "144"
+        y: "144",
+        direction: "down"
     })
 
     await db.model.Account.create({
@@ -27,7 +29,8 @@ async function initDB() {
         status: "logout",
         character: "npc2",
         x: "48",
-        y: "128"
+        y: "128",
+        direction: "down"
     })
 
     await db.model.Account.create({
@@ -36,7 +39,8 @@ async function initDB() {
         status: "login",
         character: "npc3",
         x: "0",
-        y: "0"
+        y: "0",
+        direction: "down"
     })
 }
 

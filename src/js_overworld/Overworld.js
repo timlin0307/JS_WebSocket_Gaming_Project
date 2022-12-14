@@ -83,7 +83,7 @@ class Overworld {
                     requestAnimationFrame(() => {
                         step()
                     })
-                }, 1) // if lower, other player control better
+                }, 8) // if lower, other player control better
             }
         }
         step()
@@ -91,7 +91,10 @@ class Overworld {
 
     init() {
         this.map = new OverworldMap(window.OverworldMaps.DemoRoom)
-        this.map.mountObjects()
+        console.log(startGame)
+        if (startGame) {
+            this.map.mountObjects() // walls & collision
+        }
 
         this.directionInput = new DirectionInput()
         this.directionInput.init()

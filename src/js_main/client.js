@@ -5,6 +5,7 @@ let ws
 let client_name = "unknown"
 let behavior1 = { player: "", direction: "" }
 let behavior2 = { player: "", direction: "" }
+let startGame = false
 
 function connect() {
     // check if there's a connection already for client if there is
@@ -55,21 +56,23 @@ function connect() {
             // console.log(xxxyyy.split(",")[2].split(" ")[0], xxxyyy.split(",")[2].split(" ")[1])
             if (client_name == "player1") {
                 OverworldMaps.DemoRoom.gameObjects.hero.playerToken = client_name
-                /*OverworldMaps.DemoRoom.gameObjects.hero.x = utils.withGrid(xx)
+                OverworldMaps.DemoRoom.gameObjects.hero.x = utils.withGrid(xx)
                 OverworldMaps.DemoRoom.gameObjects.hero.y = utils.withGrid(yy)
                 OverworldMaps.DemoRoom.gameObjects.npc1.x = utils.withGrid(npc1_xx)
                 OverworldMaps.DemoRoom.gameObjects.npc1.y = utils.withGrid(npc1_yy)
                 OverworldMaps.DemoRoom.gameObjects.npc2.x = utils.withGrid(npc2_xx)
-                OverworldMaps.DemoRoom.gameObjects.npc2.y = utils.withGrid(npc2_yy)*/
+                OverworldMaps.DemoRoom.gameObjects.npc2.y = utils.withGrid(npc2_yy)
+                startGame = true
             }
             if (client_name == "player2") {
                 OverworldMaps.DemoRoom.gameObjects.npc1.playerToken = client_name
-                /*OverworldMaps.DemoRoom.gameObjects.hero.x = utils.withGrid(hero_xx)
+                OverworldMaps.DemoRoom.gameObjects.hero.x = utils.withGrid(hero_xx)
                 OverworldMaps.DemoRoom.gameObjects.hero.y = utils.withGrid(hero_yy)
                 OverworldMaps.DemoRoom.gameObjects.npc1.x = utils.withGrid(xx)
                 OverworldMaps.DemoRoom.gameObjects.npc1.y = utils.withGrid(yy)
                 OverworldMaps.DemoRoom.gameObjects.npc2.x = utils.withGrid(npc2_xx)
-                OverworldMaps.DemoRoom.gameObjects.npc2.y = utils.withGrid(npc2_yy)*/
+                OverworldMaps.DemoRoom.gameObjects.npc2.y = utils.withGrid(npc2_yy)
+                startGame = true
             }
             if (client_name == "player3") {
                 OverworldMaps.DemoRoom.gameObjects.npc2.playerToken = client_name
@@ -83,6 +86,7 @@ function connect() {
             // OverworldMaps.DemoRoom.gameObjects.hero.src = "./images/characters/people/" + message.data.split(" ")[2] + ".png"
             // console.log("After login : ", OverworldMaps.DemoRoom.gameObjects.hero.playerToken, OverworldMaps.DemoRoom.gameObjects.hero.src)
             connect() // re-connect WebSocket to have a token on the website url
+            overworldInit()
 
             // show game scene
             game_container.style.display = "block"

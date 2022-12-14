@@ -15,7 +15,7 @@ class Person extends GameObject {
             "right": ["x", 1]
         }
 
-        this.playerToken = config.playerToken || "player1"
+        // this.playerToken = config.playerToken || "player1"
     }
 
     update(state) {
