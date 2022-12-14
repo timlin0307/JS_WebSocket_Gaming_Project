@@ -40,15 +40,45 @@ function connect() {
         // get player identification from server
         if (message.data.split(" ")[0] == "Verified") { // if client is verified by server
             client_name = message.data.split(" ")[1] // update current token
+            xx = parseInt(message.data.split(" ")[3], 10) / 16 // get main player's position : current x
+            yy = parseInt(message.data.split(" ")[4], 10) / 16 // get main player's position : current y
+            xxxyyy = message.data.split("& ")[1]
             // console.log("Before login : ", OverworldMaps.DemoRoom.gameObjects.hero.playerToken, OverworldMaps.DemoRoom.gameObjects.hero.src)
+            hero_xx = parseInt(xxxyyy.split(",")[0].split(" ")[0], 10) / 16 // get main hero's position : current x
+            hero_yy = parseInt(xxxyyy.split(",")[0].split(" ")[1], 10) / 16 // get main hero's position : current y
+            // console.log(xxxyyy.split(",")[0].split(" ")[0], xxxyyy.split(",")[0].split(" ")[1])
+            npc1_xx = parseInt(xxxyyy.split(",")[1].split(" ")[0], 10) / 16 // get main npc1's position : current x
+            npc1_yy = parseInt(xxxyyy.split(",")[1].split(" ")[1], 10) / 16 // get main npc1's position : current y
+            // console.log(xxxyyy.split(",")[1].split(" ")[0], xxxyyy.split(",")[1].split(" ")[1])
+            npc2_xx = parseInt(xxxyyy.split(",")[2].split(" ")[0], 10) / 16 // get main npc2's position : current x
+            npc2_yy = parseInt(xxxyyy.split(",")[2].split(" ")[1], 10) / 16 // get main npc2's position : current y
+            // console.log(xxxyyy.split(",")[2].split(" ")[0], xxxyyy.split(",")[2].split(" ")[1])
             if (client_name == "player1") {
                 OverworldMaps.DemoRoom.gameObjects.hero.playerToken = client_name
+                /*OverworldMaps.DemoRoom.gameObjects.hero.x = utils.withGrid(xx)
+                OverworldMaps.DemoRoom.gameObjects.hero.y = utils.withGrid(yy)
+                OverworldMaps.DemoRoom.gameObjects.npc1.x = utils.withGrid(npc1_xx)
+                OverworldMaps.DemoRoom.gameObjects.npc1.y = utils.withGrid(npc1_yy)
+                OverworldMaps.DemoRoom.gameObjects.npc2.x = utils.withGrid(npc2_xx)
+                OverworldMaps.DemoRoom.gameObjects.npc2.y = utils.withGrid(npc2_yy)*/
             }
             if (client_name == "player2") {
                 OverworldMaps.DemoRoom.gameObjects.npc1.playerToken = client_name
+                /*OverworldMaps.DemoRoom.gameObjects.hero.x = utils.withGrid(hero_xx)
+                OverworldMaps.DemoRoom.gameObjects.hero.y = utils.withGrid(hero_yy)
+                OverworldMaps.DemoRoom.gameObjects.npc1.x = utils.withGrid(xx)
+                OverworldMaps.DemoRoom.gameObjects.npc1.y = utils.withGrid(yy)
+                OverworldMaps.DemoRoom.gameObjects.npc2.x = utils.withGrid(npc2_xx)
+                OverworldMaps.DemoRoom.gameObjects.npc2.y = utils.withGrid(npc2_yy)*/
             }
             if (client_name == "player3") {
                 OverworldMaps.DemoRoom.gameObjects.npc2.playerToken = client_name
+                /*OverworldMaps.DemoRoom.gameObjects.hero.x = utils.withGrid(hero_xx)
+                OverworldMaps.DemoRoom.gameObjects.hero.y = utils.withGrid(hero_yy)
+                OverworldMaps.DemoRoom.gameObjects.npc1.x = utils.withGrid(npc1_xx)
+                OverworldMaps.DemoRoom.gameObjects.npc1.y = utils.withGrid(npc1_yy)
+                OverworldMaps.DemoRoom.gameObjects.npc2.x = utils.withGrid(xx)
+                OverworldMaps.DemoRoom.gameObjects.npc2.y = utils.withGrid(yy)*/
             }
             // OverworldMaps.DemoRoom.gameObjects.hero.src = "./images/characters/people/" + message.data.split(" ")[2] + ".png"
             // console.log("After login : ", OverworldMaps.DemoRoom.gameObjects.hero.playerToken, OverworldMaps.DemoRoom.gameObjects.hero.src)

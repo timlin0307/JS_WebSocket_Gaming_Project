@@ -1,4 +1,4 @@
-const { findByUsername, countRows, findAllRows, updateStatusLogin, updateStatusLogout } = require("../db_method")
+const { findByUsername, countRows, findAllRows, updateStatusLogin, updateStatusLogout, updateXY } = require("../db_method")
 
 const express = require('express') // import express module
 const app = express()
@@ -69,6 +69,8 @@ app.use(function (req, res, next) { // listen for a connection on newly initiali
     return next()
 })
 
+let xxxyyy = "" // all players' position
+
 app.ws('/', function (ws, req) {
     const { query: { token } } = url.parse(req.url, true)
     // console.log(`[SERVER] Client connects`)
@@ -91,7 +93,18 @@ app.ws('/', function (ws, req) {
                     if (res.status == "logout") { // if account hasn't login yet
                         console.log(`[SERVER] Confirming ${username} login...`)
                         updateStatusLogin(username)
-                        ws.send("Verified " + username + " " + res.character) // send player identification to client
+                        // send player identification to client
+                        db.model.Account.findAll({
+                            raw: true
+                        }).then(res2 => {
+                            xxxyyy = res2[0].x + " " + res2[0].y + ","
+                                + res2[1].x + " " + res2[1].y + ","
+                                + res2[2].x + " " + res2[2].y + ","
+                                + res2[3].x + " " + res2[3].y
+                            // console.log(res[0].x, res[0].y, res[1].x, res[1].y, res[2].x, res[2].y, res[3].x, res[3].y)
+                            // console.log(xxxyyy)
+                            ws.send("Verified " + username + " " + res.character + " " + res.x + " " + res.y + " & " + xxxyyy)
+                        })
                     } else if (res.status == "login") { // if account has been login
                         console.log(`[SERVER] Account ${username} has been used...`)
                         ws.send("Denied") // deny to send player identification to client
@@ -110,6 +123,13 @@ app.ws('/', function (ws, req) {
         // movement type message
         if (message.slice(0, 8) == "movement") {
             // console.log("move")
+            x = message.split(" ")[1] // value will be : "x,"
+            y = message.split(" ")[2] // value will be : "y,"
+            // console.log(x, y)
+            x = x.substring(0, x.length - 1) // remove "," from "x,"
+            y = y.substring(0, y.length - 1) // remove "," from "y,"
+            // console.log(x, y)
+            updateXY(token, x, y) // save current player's position in server
             wss.clients.forEach(function each(client) {
                 if (client !== ws) {
                     db.model.Account.findOne({ // find username in database

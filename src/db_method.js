@@ -44,4 +44,11 @@ const updateStatusLogout = async function (username) {
     }
 }
 
-module.exports = { findByUsername, countRows, findAllRows, updateStatusLogin, updateStatusLogout }
+const updateXY = async function (username, xx, yy) {
+    let user = await db.model.Account.update(
+        { x: xx, y: yy },
+        { where: { username: username } })
+    console.log(username + "'s XY updated to " + xx + ", " + yy)
+}
+
+module.exports = { findByUsername, countRows, findAllRows, updateStatusLogin, updateStatusLogout, updateXY }
