@@ -1,77 +1,69 @@
 class OverworldMap {
     constructor(config) {
-        this.gameObjects = config.gameObjects
+        this.gameObjects = config.gameObjects;
 
-        this.walls = config.walls || {}
+        this.walls = config.walls || {};
 
-        this.lowerImage = new Image()
-        this.lowerImage.src = config.lowerSrc // lower than characters
+        this.lowerImage = new Image();
+        this.lowerImage.src = config.lowerSrc; // lower than characters
 
-        this.upperImage = new Image()
-        this.upperImage.src = config.upperSrc // upper than characters
+        this.upperImage = new Image();
+        this.upperImage.src = config.upperSrc; // upper than characters
 
-        this.isCutscenePlaying = false
+        this.isCutscenePlaying = false;
     }
 
     drawLowerImage(ctx, cameraPerson) {
-        ctx.drawImage(
-            this.lowerImage,
-            0 + utils.withGrid(10.5) - cameraPerson.x,
-            0 + utils.withGrid(6) - cameraPerson.y
-        )
+        ctx.drawImage(this.lowerImage, 0 + utils.withGrid(10.5) - cameraPerson.x, 0 + utils.withGrid(6) - cameraPerson.y);
     }
 
     drawUpperImage(ctx, cameraPerson) {
-        ctx.drawImage(
-            this.upperImage,
-            0 + utils.withGrid(10.5) - cameraPerson.x,
-            0 + utils.withGrid(6) - cameraPerson.y
-        )
+        ctx.drawImage(this.upperImage, 0 + utils.withGrid(10.5) - cameraPerson.x, 0 + utils.withGrid(6) - cameraPerson.y);
     }
 
     isSpaceTaken(currentX, currentY, direction) {
-        const { x, y } = utils.nextPosition(currentX, currentY, direction)
-        return this.walls[`${x}, ${y}`] || false
+        const { x, y } = utils.nextPosition(currentX, currentY, direction);
+        return this.walls[`${x}, ${y}`] || false;
     }
 
     mountObjects() {
-        Object.keys(this.gameObjects).forEach(key => {
-            let object = this.gameObjects[key]
-            object.id = key
+        Object.keys(this.gameObjects).forEach((key) => {
+            let object = this.gameObjects[key];
+            object.id = key;
 
             // todo : determine if this object should actually mount
-            object.mount(this)
-        })
+            object.mount(this);
+        });
     }
 
     async startCutscene(events) {
-        this.isCutscenePlaying = true
+        this.isCutscenePlaying = true;
 
         // start a loop of async events
         for (let i = 0; i < events.length; i++) {
             const eventHandler = new OverworldEvent({
                 event: events[i],
-                map: this
-            })
+                map: this,
+            });
             // await each one
-            await eventHandler.init()
+            await eventHandler.init();
         }
 
-        this.isCutscenePlaying = false
+        this.isCutscenePlaying = false;
     }
 
     addWall(x, y) {
-        this.walls[`${x}, ${y}`] = true
+        this.walls[`${x}, ${y}`] = true;
     }
 
     removeWall(x, y) {
-        delete this.walls[`${x}, ${y}`]
+        delete this.walls[`${x}, ${y}`];
     }
 
     moveWall(wasX, wasY, direction) {
-        this.removeWall(wasX, wasY)
-        const { x, y } = utils.nextPosition(wasX, wasY, direction)
-        this.addWall(x, y)
+        this.removeWall(wasX, wasY);
+        const { x, y } = utils.nextPosition(wasX, wasY, direction);
+        this.addWall(x, y);
     }
 }
 
@@ -83,18 +75,18 @@ window.OverworldMaps = {
         gameObjects: {
             hero: new Person({
                 playerToken: client_name,
-                isPlayerControlled: true,
+                isPlayerControlled: false,
                 x: utils.withGrid(5),
-                y: utils.withGrid(6)
+                y: utils.withGrid(6),
             }),
             npc1: new Person({
                 playerToken: behavior.player,
-                isPlayerControlled: false,
+                isPlayerControlled: true,
                 x: utils.withGrid(7),
                 y: utils.withGrid(9),
                 src: "./images/characters/people/npc1.png",
-                behaviorLoop: []
-            })
+                behaviorLoop: [],
+            }),
         },
         walls: {
             // small square
@@ -141,8 +133,8 @@ window.OverworldMaps = {
             [utils.asGridCoord(11, 6)]: true,
             [utils.asGridCoord(11, 7)]: true,
             [utils.asGridCoord(11, 8)]: true,
-            [utils.asGridCoord(11, 9)]: true
-        }
+            [utils.asGridCoord(11, 9)]: true,
+        },
     },
     /*Kitchen: {
         id: "Kitchen",
@@ -180,4 +172,4 @@ window.OverworldMaps = {
             })
         }
     }*/
-}
+};
