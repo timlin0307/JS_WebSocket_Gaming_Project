@@ -33,14 +33,14 @@ class Overworld {
                         arrow: this.directionInput.direction,
                         map: this.map
                     })
-                } else if (object.playerToken == behavior1.player && object.playerToken != behavior2.player && object.isPlayerControlled) {
+                } else if (object.playerToken == behavior1.player && object.playerToken != behavior2.player) {
                     object.update({
                         arrow: behavior1.direction,
                         map: this.map
                     })
                     // console.log(behavior)
                     behavior1 = { player: "", direction: "" }
-                } else if (object.playerToken != behavior1.player && object.playerToken == behavior2.player && object.isPlayerControlled) {
+                } else if (object.playerToken != behavior1.player && object.playerToken == behavior2.player) {
                     object.update({
                         arrow: behavior2.direction,
                         map: this.map
