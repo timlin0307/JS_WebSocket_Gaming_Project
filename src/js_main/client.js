@@ -41,7 +41,15 @@ function connect() {
         if (message.data.split(" ")[0] == "Verified") { // if client is verified by server
             client_name = message.data.split(" ")[1] // update current token
             // console.log("Before login : ", OverworldMaps.DemoRoom.gameObjects.hero.playerToken, OverworldMaps.DemoRoom.gameObjects.hero.src)
-            OverworldMaps.DemoRoom.gameObjects.hero.playerToken = client_name
+            if (client_name == "player1") {
+                OverworldMaps.DemoRoom.gameObjects.hero.playerToken = client_name
+            }
+            if (client_name == "player2") {
+                OverworldMaps.DemoRoom.gameObjects.npc1.playerToken = client_name
+            }
+            if (client_name == "player3") {
+                OverworldMaps.DemoRoom.gameObjects.npc2.playerToken = client_name
+            }
             // OverworldMaps.DemoRoom.gameObjects.hero.src = "./images/characters/people/" + message.data.split(" ")[2] + ".png"
             // console.log("After login : ", OverworldMaps.DemoRoom.gameObjects.hero.playerToken, OverworldMaps.DemoRoom.gameObjects.hero.src)
             connect() // re-connect WebSocket to have a token on the website url
@@ -60,33 +68,32 @@ function connect() {
         if (message.data.slice(0, 8) == "movement") {
             if (client_name == "player1") {
                 if (message.data.split(", ")[3] == "player2") {
-                    // player2
                     behavior1 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
                     OverworldMaps.DemoRoom.gameObjects.npc1.playerToken = behavior1.player
-                } else {
-                    // player3
-                    behavior1 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
+                }
+                if (message.data.split(", ")[3] == "player3") {
+                    behavior2 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
                     OverworldMaps.DemoRoom.gameObjects.npc2.playerToken = behavior2.player
                 }
-            } else if (client_name == "player2") {
+            }
+            if (client_name == "player2") {
                 if (message.data.split(", ")[3] == "player1") {
-                    // player1
                     behavior1 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
-                    OverworldMaps.DemoRoom.gameObjects.npc1.playerToken = behavior1.player
-                } else {
-                    // player3
-                    behavior1 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
+                    OverworldMaps.DemoRoom.gameObjects.hero.playerToken = behavior1.player
+                }
+                if (message.data.split(", ")[3] == "player3") {
+                    behavior2 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
                     OverworldMaps.DemoRoom.gameObjects.npc2.playerToken = behavior2.player
                 }
-            } else if (client_name == "player3") {
+            }
+            if (client_name == "player3") {
                 if (message.data.split(", ")[3] == "player1") {
-                    // player1
                     behavior1 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
-                    OverworldMaps.DemoRoom.gameObjects.npc1.playerToken = behavior1.player
-                } else {
-                    // player2
-                    behavior1 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
-                    OverworldMaps.DemoRoom.gameObjects.npc2.playerToken = behavior2.player
+                    OverworldMaps.DemoRoom.gameObjects.hero.playerToken = behavior1.player
+                }
+                if (message.data.split(", ")[3] == "player2") {
+                    behavior2 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
+                    OverworldMaps.DemoRoom.gameObjects.npc1.playerToken = behavior2.player
                 }
             }
             // behavior1 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
