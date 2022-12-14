@@ -64,6 +64,7 @@ node db_init.js
 - In order to reconnect once client gets valid token from server, we can refresh client website to update url's token by following this : [WebSocket: How to automatically reconnect after it dies](https://stackoverflow.com/questions/22431751/websocket-how-to-automatically-reconnect-after-it-dies).
 - Because of using async-await function with return value to deal with database, we can create functions in another js files by following this : [彻底搞懂 async await 的return问题](https://blog.csdn.net/clli_Chain/article/details/106412207). But we didn't really use this kind of function eventually as async-await functions are not used to returning values.
 - To connect to server by different computer, we need to change "localhost" to "IPv4 Address" (from Wireless LAN Wi-Fi) in client.js
+- According to [What is the (function(){})() construct in JavaScript?](https://stackoverflow.com/questions/8228281/what-is-the-function-construct-in-javascript), we can reload init.js just right after client gets its own id by giving the function in init.js a varable name.
 
 ---
 ## References
