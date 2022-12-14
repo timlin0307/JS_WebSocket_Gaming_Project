@@ -39,7 +39,10 @@ function connect() {
         // get player identification from server
         if (message.data.split(" ")[0] == "Verified") { // if client is verified by server
             client_name = message.data.split(" ")[1] // update current token
-            hero_player = client_name
+            console.log("Before login : ", OverworldMaps.DemoRoom.gameObjects.hero.playerToken, OverworldMaps.DemoRoom.gameObjects.hero.src)
+            OverworldMaps.DemoRoom.gameObjects.hero.playerToken = client_name
+            OverworldMaps.DemoRoom.gameObjects.hero.src = "./images/characters/people/" + message.data.split(" ")[2] + ".png"
+            console.log("After login : ", OverworldMaps.DemoRoom.gameObjects.hero.playerToken, OverworldMaps.DemoRoom.gameObjects.hero.src)
             connect() // re-connect WebSocket to have a token on the website url
 
             // show game scene
@@ -55,6 +58,10 @@ function connect() {
         // get other players movement
         if (message.data.slice(0, 8) == "movement") {
             behavior = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
+            console.log("Before login : ", OverworldMaps.DemoRoom.gameObjects.npc1.playerToken, OverworldMaps.DemoRoom.gameObjects.npc1.src)
+            OverworldMaps.DemoRoom.gameObjects.npc1.playerToken = behavior.player
+            OverworldMaps.DemoRoom.gameObjects.npc1.src = "./images/characters/people/" + message.data.split(" ")[4] + ".png"
+            console.log("After login : ", OverworldMaps.DemoRoom.gameObjects.npc1.playerToken, OverworldMaps.DemoRoom.gameObjects.npc1.src)
             // console.log(behavior)
             // console.log(window.OverworldMaps)
         }

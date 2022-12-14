@@ -91,7 +91,7 @@ app.ws('/', function (ws, req) {
                     if (res.status == "logout") { // if account hasn't login yet
                         console.log(`[SERVER] Confirming ${username} login...`)
                         updateStatusLogin(username)
-                        ws.send("Verified " + username) // send player identification to client
+                        ws.send("Verified " + username + " " + res.character) // send player identification to client
                     } else if (res.status == "login") { // if account has been login
                         console.log(`[SERVER] Account ${username} has been used...`)
                         ws.send("Denied") // deny to send player identification to client
@@ -112,7 +112,13 @@ app.ws('/', function (ws, req) {
             // console.log("move")
             wss.clients.forEach(function each(client) {
                 if (client !== ws) {
-                    client.send(message + ", " + `${token}`) // broadcast message
+                    db.model.Account.findOne({ // find username in database
+                        where: { username: token }
+                    }).then(res => { // if find same username
+                        client.send(message + ", " + `${token}` + ", " + res.character) // broadcast message
+                    })
+
+                    // client.send(message + ", " + `${token}`) // broadcast message
                 }
             })
         }
