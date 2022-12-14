@@ -83,18 +83,28 @@ window.OverworldMaps = {
         gameObjects: {
             hero: new Person({
                 playerToken: client_name,
-                isPlayerControlled: true,
+                isPlayerControlled: false,
                 x: utils.withGrid(5),
-                y: utils.withGrid(6)
+                y: utils.withGrid(6),
+                src: "./images/characters/people/hero.png",
+                behaviorLoop: []
             }),
             npc1: new Person({
-                playerToken: behavior.player,
+                playerToken: behavior1.player,
                 isPlayerControlled: false,
                 x: utils.withGrid(7),
                 y: utils.withGrid(9),
                 src: "./images/characters/people/npc1.png",
                 behaviorLoop: []
-            })
+            }),
+            npc2: new Person({
+                playerToken: behavior2.player,
+                isPlayerControlled: false,
+                x: utils.withGrid(3),
+                y: utils.withGrid(8),
+                src: "./images/characters/people/npc2.png",
+                behaviorLoop: []
+            }),
         },
         walls: {
             // small square

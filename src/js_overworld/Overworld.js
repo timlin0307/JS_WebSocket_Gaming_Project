@@ -12,25 +12,41 @@ class Overworld {
             // clear off the canvas
             this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
 
+            var cameraPerson = ""
             // establish the camera person
-            const cameraPerson = this.map.gameObjects.hero
-            // const cameraPerson = this.map.gameObjects.npc1
+            if (this.map.gameObjects.hero.playerToken == "player1") {
+                cameraPerson = this.map.gameObjects.hero
+                this.map.gameObjects.hero.isPlayerControlled = true
+            } else if (this.map.gameObjects.hero.playerToken == "player2") {
+                cameraPerson = this.map.gameObjects.npc1
+                this.map.gameObjects.npc1.isPlayerControlled = true
+            } else if (this.map.gameObjects.hero.playerToken == "player3") {
+                cameraPerson = this.map.gameObjects.npc2
+                this.map.gameObjects.npc2.isPlayerControlled = true
+            }
 
             // update all objects
             Object.values(this.map.gameObjects).forEach(object => {
                 // console.log(object.playerToken)
-                if (object.playerToken != behavior.player && object.isPlayerControlled) {
+                if (object.playerToken != behavior1.player && object.playerToken != behavior2.player && object.isPlayerControlled) {
                     object.update({
                         arrow: this.directionInput.direction,
                         map: this.map
                     })
-                } else {
+                } else if (object.playerToken == behavior1.player && object.playerToken != behavior2.player && object.isPlayerControlled) {
                     object.update({
-                        arrow: behavior.direction,
+                        arrow: behavior1.direction,
                         map: this.map
                     })
                     // console.log(behavior)
-                    behavior = { player: "", direction: "" }
+                    behavior1 = { player: "", direction: "" }
+                } else if (object.playerToken != behavior1.player && object.playerToken == behavior2.player && object.isPlayerControlled) {
+                    object.update({
+                        arrow: behavior2.direction,
+                        map: this.map
+                    })
+                    // console.log(behavior)
+                    behavior2 = { player: "", direction: "" }
                 }
             })
 
