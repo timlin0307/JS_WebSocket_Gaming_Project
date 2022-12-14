@@ -13,6 +13,7 @@ JS_WebSocket_Gaming_Project
 - **[Done]** Add a status in db to check whether player is been used or not
 - **[Done]** Update db account status if player login
 - **[Done]** Different players have different token while connecting to server (personal account)
+- **[Done]** Update db player status (character, position, ...) if player moves
 
 ---
 ## Development of Game View
@@ -21,8 +22,9 @@ JS_WebSocket_Gaming_Project
 - **[Done]** Login page before playing game
 - **[Done]** Body & Item block
 - **[Done]** One client can see player controlled by another client
-- **[Done]** Two client controll different player (only two now)
+- **[Done]** Two client controll different player
 - **[Done]** Three client controll different player by different computer (only three now)
+- **[On-going]** Clients login at different time but still having same view (body block & direction problems)
 
 ---
 ## Important Command
