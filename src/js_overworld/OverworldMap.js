@@ -86,6 +86,7 @@ window.OverworldMaps = {
                 isPlayerControlled: false,
                 x: utils.withGrid(5),
                 y: utils.withGrid(6),
+                direction: "down",
                 src: "./images/characters/people/hero.png",
                 behaviorLoop: []
             }),
@@ -94,6 +95,7 @@ window.OverworldMaps = {
                 isPlayerControlled: false,
                 x: utils.withGrid(7),
                 y: utils.withGrid(9),
+                direction: "down",
                 src: "./images/characters/people/npc1.png",
                 behaviorLoop: []
             }),
@@ -102,6 +104,7 @@ window.OverworldMaps = {
                 isPlayerControlled: false,
                 x: utils.withGrid(3),
                 y: utils.withGrid(8),
+                direction: "down",
                 src: "./images/characters/people/npc2.png",
                 behaviorLoop: []
             }),

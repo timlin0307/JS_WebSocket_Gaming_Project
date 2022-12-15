@@ -51,4 +51,11 @@ const updateXY = async function (username, xx, yy) {
     console.log(username + "'s XY updated to " + xx + ", " + yy)
 }
 
-module.exports = { findByUsername, countRows, findAllRows, updateStatusLogin, updateStatusLogout, updateXY }
+const updateDirection = async function (username, direct) {
+    let user = await db.model.Account.update(
+        { direction: direct },
+        { where: { username: username } })
+    console.log(username + "'s direction updated to " + direct)
+}
+
+module.exports = { findByUsername, countRows, findAllRows, updateStatusLogin, updateStatusLogout, updateXY, updateDirection }

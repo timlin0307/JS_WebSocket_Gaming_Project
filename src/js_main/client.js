@@ -54,6 +54,13 @@ function connect() {
             npc2_xx = parseInt(xxxyyy.split(",")[2].split(" ")[0], 10) / 16 // get main npc2's position : current x
             npc2_yy = parseInt(xxxyyy.split(",")[2].split(" ")[1], 10) / 16 // get main npc2's position : current y
             // console.log(xxxyyy.split(",")[2].split(" ")[0], xxxyyy.split(",")[2].split(" ")[1])
+            direct = message.data.split("& ")[2]
+            hero_direction = direct.split(",")[0] // get main hero's direction
+            // console.log(direct.split(",")[0])
+            npc1_direction = direct.split(",")[1] // get main hero's direction
+            // console.log(direct.split(",")[1])
+            npc2_direction = direct.split(",")[2] // get main hero's direction
+            // console.log(direct.split(",")[2])
             if (client_name == "player1") {
                 OverworldMaps.DemoRoom.gameObjects.hero.playerToken = client_name
                 OverworldMaps.DemoRoom.gameObjects.hero.x = utils.withGrid(xx)
@@ -76,13 +83,17 @@ function connect() {
             }
             if (client_name == "player3") {
                 OverworldMaps.DemoRoom.gameObjects.npc2.playerToken = client_name
-                /*OverworldMaps.DemoRoom.gameObjects.hero.x = utils.withGrid(hero_xx)
+                OverworldMaps.DemoRoom.gameObjects.hero.x = utils.withGrid(hero_xx)
                 OverworldMaps.DemoRoom.gameObjects.hero.y = utils.withGrid(hero_yy)
                 OverworldMaps.DemoRoom.gameObjects.npc1.x = utils.withGrid(npc1_xx)
                 OverworldMaps.DemoRoom.gameObjects.npc1.y = utils.withGrid(npc1_yy)
                 OverworldMaps.DemoRoom.gameObjects.npc2.x = utils.withGrid(xx)
-                OverworldMaps.DemoRoom.gameObjects.npc2.y = utils.withGrid(yy)*/
+                OverworldMaps.DemoRoom.gameObjects.npc2.y = utils.withGrid(yy)
+                startGame = true
             }
+            OverworldMaps.DemoRoom.gameObjects.hero.direction = hero_direction
+            OverworldMaps.DemoRoom.gameObjects.npc1.direction = npc1_direction
+            OverworldMaps.DemoRoom.gameObjects.npc2.direction = npc2_direction
             // OverworldMaps.DemoRoom.gameObjects.hero.src = "./images/characters/people/" + message.data.split(" ")[2] + ".png"
             // console.log("After login : ", OverworldMaps.DemoRoom.gameObjects.hero.playerToken, OverworldMaps.DemoRoom.gameObjects.hero.src)
             connect() // re-connect WebSocket to have a token on the website url

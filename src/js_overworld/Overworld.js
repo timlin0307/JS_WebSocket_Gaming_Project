@@ -91,8 +91,8 @@ class Overworld {
 
     init() {
         this.map = new OverworldMap(window.OverworldMaps.DemoRoom)
-        console.log(startGame)
-        if (startGame) {
+        // console.log(startGame)
+        if (startGame) { // reload to avoid the walls placing faults
             this.map.mountObjects() // walls & collision
         }
 

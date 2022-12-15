@@ -1,4 +1,4 @@
-const { findByUsername, countRows, findAllRows, updateStatusLogin, updateStatusLogout, updateXY } = require("../db_method")
+const { findByUsername, countRows, findAllRows, updateStatusLogin, updateStatusLogout, updateXY, updateDirection } = require("../db_method")
 
 const express = require('express') // import express module
 const app = express()
@@ -97,13 +97,17 @@ app.ws('/', function (ws, req) {
                         db.model.Account.findAll({
                             raw: true
                         }).then(res2 => {
+                            // get all players' position
                             xxxyyy = res2[0].x + " " + res2[0].y + ","
                                 + res2[1].x + " " + res2[1].y + ","
                                 + res2[2].x + " " + res2[2].y + ","
                                 + res2[3].x + " " + res2[3].y
+                            // get all players' direction
+                            direct = res2[0].direction + "," + res2[1].direction + ","
+                                + res2[2].direction + "," + res2[3].direction
                             // console.log(res[0].x, res[0].y, res[1].x, res[1].y, res[2].x, res[2].y, res[3].x, res[3].y)
                             // console.log(xxxyyy)
-                            ws.send("Verified " + username + " " + res.character + " " + res.x + " " + res.y + " & " + xxxyyy)
+                            ws.send("Verified " + username + " " + res.character + " " + res.x + " " + res.y + " & " + xxxyyy + " & " + direct)
                         })
                     } else if (res.status == "login") { // if account has been login
                         console.log(`[SERVER] Account ${username} has been used...`)
@@ -123,13 +127,16 @@ app.ws('/', function (ws, req) {
         // movement type message
         if (message.slice(0, 8) == "movement") {
             // console.log("move")
-            x = message.split(" ")[1] // value will be : "x,"
-            y = message.split(" ")[2] // value will be : "y,"
+            x = message.split(" ")[1] // get x but value will be : "x,"
+            y = message.split(" ")[2] // get y value will be : "y,"
             // console.log(x, y)
             x = x.substring(0, x.length - 1) // remove "," from "x,"
             y = y.substring(0, y.length - 1) // remove "," from "y,"
             // console.log(x, y)
             updateXY(token, x, y) // save current player's position in server
+            direction = message.split(" ")[3] // get player's direction
+            // console.log(direction)
+            updateDirection(token, direction) // save current player's direction in server
             wss.clients.forEach(function each(client) {
                 if (client !== ws) {
                     db.model.Account.findOne({ // find username in database
