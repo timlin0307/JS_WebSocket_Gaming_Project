@@ -69,7 +69,9 @@ function connect() {
                 OverworldMaps.DemoRoom.gameObjects.npc1.y = utils.withGrid(npc1_yy)
                 OverworldMaps.DemoRoom.gameObjects.npc2.x = utils.withGrid(npc2_xx)
                 OverworldMaps.DemoRoom.gameObjects.npc2.y = utils.withGrid(npc2_yy)
-                startGame = true
+                OverworldMaps.DemoRoom.gameObjects.hero.direction = hero_direction
+                OverworldMaps.DemoRoom.gameObjects.npc1.sprite.currentAnimation = "idle-" + npc1_direction
+                OverworldMaps.DemoRoom.gameObjects.npc2.sprite.currentAnimation = "idle-" + npc2_direction
             }
             if (client_name == "player2") {
                 OverworldMaps.DemoRoom.gameObjects.npc1.playerToken = client_name
@@ -79,7 +81,9 @@ function connect() {
                 OverworldMaps.DemoRoom.gameObjects.npc1.y = utils.withGrid(yy)
                 OverworldMaps.DemoRoom.gameObjects.npc2.x = utils.withGrid(npc2_xx)
                 OverworldMaps.DemoRoom.gameObjects.npc2.y = utils.withGrid(npc2_yy)
-                startGame = true
+                OverworldMaps.DemoRoom.gameObjects.hero.sprite.currentAnimation = "idle-" + hero_direction
+                OverworldMaps.DemoRoom.gameObjects.npc1.direction = npc1_direction
+                OverworldMaps.DemoRoom.gameObjects.npc2.sprite.currentAnimation = "idle-" + npc2_direction
             }
             if (client_name == "player3") {
                 OverworldMaps.DemoRoom.gameObjects.npc2.playerToken = client_name
@@ -89,11 +93,11 @@ function connect() {
                 OverworldMaps.DemoRoom.gameObjects.npc1.y = utils.withGrid(npc1_yy)
                 OverworldMaps.DemoRoom.gameObjects.npc2.x = utils.withGrid(xx)
                 OverworldMaps.DemoRoom.gameObjects.npc2.y = utils.withGrid(yy)
-                startGame = true
+                OverworldMaps.DemoRoom.gameObjects.hero.sprite.currentAnimation = "idle-" + hero_direction
+                OverworldMaps.DemoRoom.gameObjects.npc1.sprite.currentAnimation = "idle-" + npc1_direction
+                OverworldMaps.DemoRoom.gameObjects.npc2.direction = npc2_direction
             }
-            OverworldMaps.DemoRoom.gameObjects.hero.direction = hero_direction
-            OverworldMaps.DemoRoom.gameObjects.npc1.direction = npc1_direction
-            OverworldMaps.DemoRoom.gameObjects.npc2.direction = npc2_direction
+            startGame = true // to re-run a function in overworldInit()
             // OverworldMaps.DemoRoom.gameObjects.hero.src = "./images/characters/people/" + message.data.split(" ")[2] + ".png"
             // console.log("After login : ", OverworldMaps.DemoRoom.gameObjects.hero.playerToken, OverworldMaps.DemoRoom.gameObjects.hero.src)
             connect() // re-connect WebSocket to have a token on the website url
@@ -115,30 +119,36 @@ function connect() {
                 if (message.data.split(", ")[3] == "player2") {
                     behavior1 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
                     OverworldMaps.DemoRoom.gameObjects.npc1.playerToken = behavior1.player
+                    // OverworldMaps.DemoRoom.gameObjects.npc1.direction = behavior1.direction
                 }
                 if (message.data.split(", ")[3] == "player3") {
                     behavior2 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
                     OverworldMaps.DemoRoom.gameObjects.npc2.playerToken = behavior2.player
+                    // OverworldMaps.DemoRoom.gameObjects.npc2.direction = behavior2.direction
                 }
             }
             if (client_name == "player2") {
                 if (message.data.split(", ")[3] == "player1") {
                     behavior1 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
                     OverworldMaps.DemoRoom.gameObjects.hero.playerToken = behavior1.player
+                    // OverworldMaps.DemoRoom.gameObjects.hero.direction = behavior1.direction
                 }
                 if (message.data.split(", ")[3] == "player3") {
                     behavior2 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
                     OverworldMaps.DemoRoom.gameObjects.npc2.playerToken = behavior2.player
+                    // OverworldMaps.DemoRoom.gameObjects.npc2.direction = behavior2.direction
                 }
             }
             if (client_name == "player3") {
                 if (message.data.split(", ")[3] == "player1") {
                     behavior1 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
                     OverworldMaps.DemoRoom.gameObjects.hero.playerToken = behavior1.player
+                    // OverworldMaps.DemoRoom.gameObjects.hero.direction = behavior1.direction
                 }
                 if (message.data.split(", ")[3] == "player2") {
                     behavior2 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
                     OverworldMaps.DemoRoom.gameObjects.npc1.playerToken = behavior2.player
+                    // OverworldMaps.DemoRoom.gameObjects.npc1.direction = behavior1.direction
                 }
             }
             // behavior1 = { player: message.data.split(", ")[3], direction: message.data.split(", ")[2] }
